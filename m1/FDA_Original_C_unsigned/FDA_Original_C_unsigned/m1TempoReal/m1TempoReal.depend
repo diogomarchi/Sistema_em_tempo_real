@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1600474803 source:c:\users\diogo\documents\faculdade-materias\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	"pgmfiles.h"
+	"diff2d.h"
+	<time.h>
+
+1492554098 c:\users\diogo\documents\faculdade-materias\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\pgmfiles.h
+	<stdio.h>
+	<stdlib.h>
+
+1184664040 c:\users\diogo\documents\faculdade-materias\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\diff2d.h
+
+1600474758 source:c:\users\diogo\documents\faculdade-materias\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\diff2d.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	"diff2d.h"
+	<time.h>
+	<intrin.h>
+
+1492554088 source:c:\users\diogo\documents\faculdade-materias\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\pgmfiles.c
+	"pgmfiles.h"
+
+1184664040 source:c:\users\diogo\documents\faculdade-materias\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\pgmtolist.c
+	<stdio.h>
+	<stdlib.h>
+
