@@ -64,7 +64,11 @@ void diffLUT// diff modificado para chamar a tabela de valores
 
 long    i, j;                                     /* loop variables */
 float   qC, qN, qN2, qNE, qE, qSE, qS, qSW, qW, qNW;   /* weights */
-float   **g;                                      /* work copy of f */
+float   **g;
+
+unsigned __int64 i_anterior, i_posterior;
+unsigned __int64 i_primeiro;
+/* work copy of f */
 
 
 /* ---- allocate storage for g ---- */
@@ -110,6 +114,7 @@ for (j=0; j<=ny+1; j++)
 
 /* ---- diffusive averaging ---- */
 double tempoAnterior = (double)clock();
+//i_anterior = __rdtsc();
 for (i=1; i<=nx; i++)
  for (j=1; j<=ny; j++)
 
@@ -136,8 +141,12 @@ for (i=1; i<=nx; i++)
      }  /* for */
 
   double tempoPosterior = (double)clock();
+  //i_posterior = __rdtsc();
+  //i_primeiro = i_posterior - i_anterior;
+  //printf("Cycle in diffLUT: %I64d \n\n", i_primeiro);
   double diff2dTempo = (tempoPosterior - tempoAnterior)/minhaFreq;
-  printf("\nTempo diff2d: %.30lf \n", diff2dTempo);
+  printf("Time in diffLUT: %.30lf \n\n", diff2dTempo);
+
 /* ---- disallocate storage for g ---- */
 for (i=0; i<=nx+1; i++)
     free(g[i]);
@@ -181,6 +190,8 @@ long    i, j;                                     /* loop variables */
 float   qC, qN, qNE, qE, qSE, qS, qSW, qW, qNW;   /* weights */
 float   **g;                                      /* work copy of f */
 
+unsigned __int64 i_anterior, i_posterior;
+unsigned __int64 i_primeiro;
 
 /* ---- allocate storage for g ---- */
 
@@ -225,6 +236,7 @@ for (j=0; j<=ny+1; j++)
 
 /* ---- diffusive averaging ---- */
 double tempoAnterior = (double)clock();
+//i_anterior = __rdtsc();
 for (i=1; i<=nx; i++)
  for (j=1; j<=ny; j++)
 
@@ -253,9 +265,12 @@ for (i=1; i<=nx; i++)
   //    printf("qn: %f\t", qN);
     //}
      }  /* for */
+  //i_posterior = __rdtsc();
+  //i_primeiro = i_posterior - i_anterior;
+  //printf("Cycle in diff2d: %I64d \n\n", i_primeiro);
   double tempoPosterior = (double)clock();
   double diff2dTempo = (tempoPosterior - tempoAnterior)/minhaFreq;
-  printf("\nTempo diff2d: %.30lf \n", diff2dTempo);
+  printf("Time in diff2d: %.30lf \n\n", diff2dTempo);
 /* ---- disallocate storage for g ---- */
 for (i=0; i<=nx+1; i++)
     free(g[i]);

@@ -58,7 +58,7 @@ void main (int argc, char **argv) {
   unsigned __int64 i_terceiro;
 
 
-  i_anterior = __rdtsc();
+  //i_anterior = __rdtsc();
   double tempoAnterior = clock();
   matrix = (float **) malloc (PGMImage->x * sizeof(float *));
   if (matrix == NULL)
@@ -76,14 +76,14 @@ void main (int argc, char **argv) {
         }
     }
   double tempoPosterior = clock();
-  i_posterior = __rdtsc();
+  //i_posterior = __rdtsc();
   primeiroTempo = (tempoPosterior - tempoAnterior) / minhaFreq;
-  i_primeiro = i_posterior - i_anterior;
-  printf("\n Contagem de ciclo pela intrin.h: %I64d \n", i_primeiro);
-  printf("\n Primeiro tempo: %f \n", primeiroTempo);
+  //i_primeiro = i_posterior - i_anterior;
+  //printf("\nCycle in function allocate storage for matrix: %I64d \n", i_primeiro);
+  printf("\nTime in function allocate storage for matrix: %f \n", primeiroTempo);
 
   /* ---- read image data into matrix ---- */
-  i_anterior = __rdtsc();
+  //i_anterior = __rdtsc();
   tempoAnterior = clock();
 
   for (i=0; i<PGMImage->x; i++)
@@ -91,11 +91,11 @@ void main (int argc, char **argv) {
       matrix[i][j] = (float) *(PGMImage->imageData + (i*PGMImage->y) + j);
 
   tempoPosterior = (double)clock();
-  i_posterior = __rdtsc();
+  //i_posterior = __rdtsc();
   segundoTempo = (tempoPosterior - tempoAnterior) / minhaFreq;
-  printf("\n Segundo tempo: %f \n", segundoTempo);
-  i_segundo = i_posterior - i_anterior;
-  printf("\n Contagem de ciclo pela intrin.h: %I64d \n", i_segundo);
+  printf("\nTime in function read image data into matrix: %f \n", segundoTempo);
+  //i_segundo = i_posterior - i_anterior;
+  //printf("\nCycle in function read image data into matrix: %I64d \n", i_segundo);
 
 
   /* ---- process image ---- */
@@ -111,21 +111,21 @@ void main (int argc, char **argv) {
   calculaVetor(0.5, lambda, PGMImage->x, PGMImage->y, vet);
 
 
-  i_anterior = __rdtsc();
+  //i_anterior = __rdtsc();
   tempoAnterior = (double)clock();
 
   for (i=1; i<=imax; i++)
     {
       printf("iteration number: %3ld \n", i);
-      diffLUT (0.5, lambda, PGMImage->x, PGMImage->y, matrix, vet);
+      diff2d (0.5, lambda, PGMImage->x, PGMImage->y, matrix);
     }
 
   tempoPosterior = (double)clock();
-  i_posterior = __rdtsc();
+  //i_posterior = __rdtsc();
   terceiroTempo = (tempoPosterior - tempoAnterior) / minhaFreq;
-  printf("\n Terceiro tempo: %.30lf \n", terceiroTempo);
-  i_terceiro = i_posterior - i_anterior;
-  printf("\n Contagem de ciclo pela intrin.h: %I64d \n", i_terceiro);
+  printf("\nTime in for the diffLUT: %.30lf \n", terceiroTempo);
+  //i_terceiro = i_posterior - i_anterior;
+  //printf("\nCycle in for the diffLUT: %I64d \n", i_terceiro);
 
 
   /* copy the Result Image to PGM Image/File structure */
@@ -134,8 +134,15 @@ void main (int argc, char **argv) {
       *(PGMImage->imageData + i*PGMImage->y + j) = (char) matrix[i][j];
 
   /* ---- write image ---- */
-  printf("name of output PGM image file (with extender): ");
-  scanf("%s", PGMImage->fileName);
+  if (!argv[2])
+  {
+    printf("name of output PGM image file (with extender): ");
+    scanf("%s", PGMImage->fileName);
+  }
+  else
+  {
+    strcpy(PGMImage->fileName, argv[2]);
+  }
 
   write8bitPGM(PGMImage);
   /* ---- disallocate storage ---- */
