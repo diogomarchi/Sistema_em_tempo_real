@@ -30,3 +30,34 @@
 	<stdio.h>
 	<stdlib.h>
 
+1600731472 source:d:\hd\documentos\faculdade-materias\str\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\diff2d.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	"diff2d.h"
+	<time.h>
+	<intrin.h>
+
+1184660440 d:\hd\documentos\faculdade-materias\str\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\diff2d.h
+
+1600783068 source:d:\hd\documentos\faculdade-materias\str\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	"pgmfiles.h"
+	"diff2d.h"
+	<time.h>
+
+1492550498 d:\hd\documentos\faculdade-materias\str\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\pgmfiles.h
+	<stdio.h>
+	<stdlib.h>
+
+1492550488 source:d:\hd\documentos\faculdade-materias\str\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\pgmfiles.c
+	"pgmfiles.h"
+
+1184660440 source:d:\hd\documentos\faculdade-materias\str\sistema_em_tempo_real\m1\fda_original_c_unsigned\fda_original_c_unsigned\m1temporeal\pgmtolist.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -153,6 +153,8 @@ void main (int argc, char **argv) {
 
   free(PGMImage->imageData);
   free(PGMImage);
+
+  return 0;
 }
 
 
